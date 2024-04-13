@@ -1,0 +1,97 @@
+<%- layout('layouts/boilerplate') %>
+    <div class="d-flex align-items-center flex-column">
+        <h3>Add <%= type %></h3>
+        <% if (type === 'Club') {%>
+            <form method="post" action="/admin/addClub" enctype="application/x-www-form-urlencoded" class="d-flex flex-column">
+                <label for="name">Club Name:</label>
+                <input id="name" name="name" placeholder="Club Name" class="mb-2">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email" class="mb-2">
+                <label for="Society">Society:</label>
+                <select id="Society" name="Society" placeholder="Society" class="mb-2">
+                    <option>Technical</option>
+                    <option>Cultural</option>
+                    <option>Literary</option>
+                    <option>Sports</option>
+                    <option>Academic</option>
+                    <option>Research</option>
+                </select>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <% } %>
+        <% if (type === 'Secretary') {%>
+            <form method="post" action="/admin/addSecretary" enctype="application/x-www-form-urlencoded" class="d-flex flex-column">
+                <label for="name">Name:</label>
+                <input id="name" name="name" placeholder="Name" class="mb-2">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email" class="mb-2">
+                <label for="Society">Society:</label>
+                <select id="Society" name="Society" placeholder="Society" class="mb-2">
+                    <option>Technical</option>
+                    <option>Cultural</option>
+                    <option>Literary</option>
+                    <option>Sports</option>
+                    <option>Academic</option>
+                    <option>Research</option>
+                </select>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <% } %>
+        <% if (type === 'ClubFA') {%>
+            <form method="post" action="/admin/addClubFA" enctype="application/x-www-form-urlencoded" class="d-flex flex-column">
+                <label for="name">Name:</label>
+                <input id="name" name="name" placeholder="Name" class="mb-2">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email" class="mb-2">
+                <label for="clubname">Club Name:</label>
+                <input id="clubname" name="club" placeholder="club name" class="mb-2">
+                <label for="Society">Society:</label>
+                <select id="Society" name="Society" placeholder="Society" class="mb-2">
+                    <option>Technical</option>
+                    <option>Cultural</option>
+                    <option>Literary</option>
+                    <option>Sports</option>
+                    <option>Academic</option>
+                    <option>Research</option>
+                </select>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <% } %>
+        <% if (type === 'SocietyFA') {%>
+            <form method="post" action="/admin/addSocietyFA" enctype="application/x-www-form-urlencoded" class="d-flex flex-column">
+                <label for="name">Name:</label>
+                <input id="name" name="name" placeholder="Name" class="mb-2">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email" class="mb-2">
+                <label for="Society">Society:</label>
+                <select id="Society" name="Society" placeholder="Society" class="mb-2">
+                    <option>Technical</option>
+                    <option>Cultural</option>
+                    <option>Literary</option>
+                    <option>Sports</option>
+                    <option>Academic</option>
+                    <option>Research</option>
+                </select>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <% } %>
+        <% if (type === 'ChairSAP') {%>
+            <form method="post" action="/admin/addChairSAP" enctype="application/x-www-form-urlencoded" class="d-flex flex-column">
+                <label for="name">Name:</label>
+                <input id="name" name="name" placeholder="Name" class="mb-2">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email" class="mb-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <% } %>
+        <% if (type === 'DeanStudents') {%>
+            <form method="post" action="/admin/addDeanStudents" enctype="application/x-www-form-urlencoded" class="d-flex flex-column">
+                <label for="name">Name:</label>
+                <input id="name" name="name" placeholder="Name" class="mb-2">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email" class="mb-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <% } %>
+    </div>
+    <hr>

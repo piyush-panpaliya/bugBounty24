@@ -1,0 +1,30 @@
+<%- layout('layouts/boilerplate') %>
+    <a style="text-decoration: none;" href="/addRequest">
+    <div class=" d-flex flex-column justify-content-center align-items-center border border-primary ms-5 mt-5" style="width: 200px; height:200px">
+        <i class="fa-solid fa-plus"></i>
+        <div>Add a New Request</div>
+    </div>
+    </a> 
+    <hr>
+    <div class="m-5">
+        <h3>Current Requests</h3>
+        <div class="d-flex flex-column">
+            <% requests.forEach(function(request){%>
+            <div class="col-sm-12 col-xl-6 advert mb-2">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0"><%= request.title %></h6>
+                        <div>
+                            <h6>Posted by-</h6>
+                            <%= request.email %>
+                        </div>
+                    </div>
+                    <form method="post" action="/club/request">
+                        <input name="id" value="<%= request._id %>" hidden>
+                        <button class="btn btn-primary">View more</button>
+                    </form>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>

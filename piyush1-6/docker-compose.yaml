@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  piyush1-6:
+    container_name: piyush1-6
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - '8083:8080'
+    restart: on-failure:5
+    networks:
+      - bridge
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '1024M'
+
+networks:
+  bridge:
+    driver: bridge

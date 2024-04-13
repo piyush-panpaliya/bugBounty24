@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate')%>
+    <div class="flex flex-x">
+        <form method="POST" action="/addRequest" enctype="multipart/form-data">
+            <input name="club_name" value="<%= results.name %>" hidden>
+            <input name="society" value="<%= results.society %>" hidden>
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add a Request</h6>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Name" required>
+                    <label for="title">Request Title</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="Desc" name="request_description" style="height: 150px;"></textarea>
+                    <label for="Desc">Request Details</label>
+                </div>
+                <div class="mb-3">
+                    <!-- <input class="form-control" type="file" id="image" name="image" value="" accept="image/*,application/pdf"> -->
+                    <label for="image" class="form-label">Add attachments(select all of them at the same time)</label>
+                    <input type="file" name="attachments" id="image" class="form-control" accept="image/*,application/pdf" multiple required>
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" id="isMonetary">
+                    <label>Is request monetary? </label>
+                </div>
+                <div class="form-floating mb-3" id="monetaryAmount" style="display: none;">
+                    <input class="form-control" type="number" name="money" id="money">
+                    <label for="money">Amount to be Requested</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('isMonetary').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('monetaryAmount').style.display = 'block';
+            } else {
+                document.getElementById('monetaryAmount').style.display = 'none';
+            }
+        });
+    </script>
