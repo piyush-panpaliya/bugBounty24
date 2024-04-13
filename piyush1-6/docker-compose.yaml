@@ -7,14 +7,14 @@ services:
       context: ./app
       dockerfile: Dockerfile
     ports:
-      - '8083:8080'
+      - '8080:8080'
     restart: on-failure:5
     networks:
       - bridge
     deploy:
       resources:
         limits:
-          cpus: '0.5'
+          cpus: '1s'
           memory: '1024M'
 
 networks:
