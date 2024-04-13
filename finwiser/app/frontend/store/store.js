@@ -13,7 +13,11 @@ const persisteduserDataReducer = persistReducer(persistConfig, authAnduserReduce
 export const store = configureStore({
     reducer: {
         authAnduser: persisteduserDataReducer,
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 })
 
 export const persistor = persistStore(store)

@@ -9,9 +9,9 @@ const authAnduserSlice = createSlice({
             state.isAuthenticated = true,
                 state.userData = action.payload.user
         },
-        setunAuthenticated: (state, action) => {
+        setunAuthenticated: (state, _) => {
             state.isAuthenticated = false,
-                state.userData = null
+            state.userData = null
         }
     }
 

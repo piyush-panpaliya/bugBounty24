@@ -1,22 +1,49 @@
-version: '3.8'
+version: '3'
 
 services:
-  piyush1-6:
-    container_name: piyush1-6
+  finwiserf:
+    container_name: finwiserf
     build:
-      context: ./app
+      context: ./app/frontend
       dockerfile: Dockerfile
     ports:
-      - '8083:8080'
-    restart: on-failure:5
-    networks:
-      - bridge
+      - "8085:80"
+    depends_on:
+      - finwiserb
     deploy:
       resources:
         limits:
           cpus: '0.5'
           memory: '1024M'
 
-networks:
-  bridge:
-    driver: bridge
+  finwiserb:
+    container_name: finwiserb
+    build:
+      context: ./app/backend
+      dockerfile: Dockerfile
+    ports:
+      - "8086:5000"
+    environment:
+      MONGODB_URL: mongodb://mongodbfinwiser:27017/finwiser
+    depends_on:
+      - mongodbfinwiser
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '1024M'
+
+  mongodbfinwiser:
+    container_name: mongodbfinwiser
+    build:
+      context: ./mongoDB
+      dockerfile: Dockerfile
+    volumes:
+      - ./mongoDB/data:/data/db
+    ports:
+      - "8087:27017"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '1024M'
