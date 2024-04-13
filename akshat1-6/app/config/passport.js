@@ -2,10 +2,7 @@ require('dotenv').config();
 const User = require('../models/user');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-const callbackuri =
-  process.env.NODE_ENV === 'production'
-    ? process.env.CALLBACK_URL
-    : 'http://localhost:8083/auth/google/callback';
+const callbackuri =process.env.CALLBACK_URL
 const strategy = new GoogleStrategy(
   {
     clientID: process.env.GOOGLE_ID,
