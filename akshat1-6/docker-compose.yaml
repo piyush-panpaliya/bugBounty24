@@ -1,13 +1,13 @@
 version: '3.8'
 
 services:
-  piyush1-6:
-    container_name: piyush1-6
+  akshat1-6:
+    container_name: akshat1-6
     build:
       context: ./app
       dockerfile: Dockerfile
     ports:
-      - '8080:8080'
+      - '8083:8080'
     volumes:
       - ./instance:/app/instance
     restart: on-failure:5
@@ -20,10 +20,23 @@ services:
           memory: '1024M'
     environment:
       - MONGODB_URI=mongodb://mongo:27017/test
-    links:
-      - mongo
     depends_on:
       - mongo
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    ports:
+      - '8081:27017'
+    volumes:
+      - .mongo/data:/data/db
+    restart: on-failure:5
+    networks:
+      - bridge
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '1024M'
 
 networks:
   bridge:
